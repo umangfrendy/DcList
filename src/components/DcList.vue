@@ -26,9 +26,9 @@
           <template>
             <div>
               <v-col v-for="(item, i) in items" :key="i" cols="12">
-                <v-expansion-panels class="mb-6">
+                <v-expansion-panels>
                   <v-expansion-panel>
-                    <v-expansion-panel-header expand-icon="mdi-chevron-down">
+                    <v-expansion-panel-header >
                       DC Number: {{ item.DC_Number }}
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
@@ -46,44 +46,64 @@
                       </v-row>
 
                       <div>
-                        <v-tabs center-active>
-                          <v-tab @click="order" class="font-weight-bold">
-                            ORDER</v-tab
-                          >
-                          <v-tab @click="product" class="font-weight-bold">
-                            PRODUCT</v-tab
-                          >
-                        </v-tabs>
-                        <!-- <v-dialog v-model="order"> -->
-                          <v-row class="pt-6">
-                            <p class="body-2">
-                              Name: <b>{{ item.name }}</b>
-                            </p>
-                          </v-row>
-                          <v-row>
-                            <p class="body-2">
-                              Number: <b>{{ item.number }}</b>
-                            </p>
-                          </v-row>
-                          <v-row>
-                            <p class="body-2">
-                              Email: <b>{{ item.email }}</b>
-                            </p>
-                          </v-row>
-                        <!-- </v-dialog> -->
+                        <template>
+                          <!-- <v-tabs center-active v-model="currentItem">
+                            <v-tab :href="'#' + order" class="font-weight-bold">
+                              ORDER</v-tab
+                            >
+                            <v-tab
+                              :href="'#' + product"
+                              class="font-weight-bold"
+                            >
+                              PRODUCT</v-tab
+                            >
+                          </v-tabs> -->
+                          <v-tabs center-active v-model="currentItem">
+                            <v-tab class="font-weight-bold"> ORDER</v-tab>
+                            <v-tab class="font-weight-bold"> PRODUCT</v-tab>
+                          </v-tabs>
+                        </template>
+                        <v-tabs-items v-model="currentItem">
+                          <v-tab-item class="pl-5">
+                            <v-row class="pt-6">
+                              <p class="body-2">
+                                Name: <b>{{ item.name }}</b>
+                              </p>
+                            </v-row>
+                            <v-row>
+                              <p class="body-2">
+                                Number: <b>{{ item.number }}</b>
+                              </p>
+                            </v-row>
+                            <v-row>
+                              <p class="body-2">
+                                Email: <b>{{ item.email }}</b>
+                              </p>
+                            </v-row>
+                          </v-tab-item>
 
-                        <!-- <v-dialog v-model="product"> -->
-                          <v-img
-                            :src="item.src"
-                            class="white--text align-end"
-                            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                            height="200px"
-                            width="200px"
-                          >
-                            <v-card-title v-text="item.name"></v-card-title>
-                          </v-img>
-                        <!-- </v-dialog> -->
-                        
+                          <v-tab-item class="pt=5">
+                            <!-- <v-row
+                              align="right"
+                              align-content="right"
+                              class="text-right"
+                            > -->
+                            <v-row alignment="left"> 
+                            <v-card flat class="mt-10" height="200px"
+                                width="200px">
+
+                              <v-img
+                                :src="item.src"
+                                class="white--text "
+                                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                                
+                              >
+                                <v-card-title v-text="item.name"></v-card-title>
+                              </v-img>
+                            </v-card>
+                            </v-row>
+                          </v-tab-item>
+                        </v-tabs-items>
                       </div>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
@@ -100,6 +120,7 @@
 <script>
 export default {
   data: () => ({
+    currentItem: "tab-Web5",
     items: [
       {
         DC_Number: "42122DC-75175",
