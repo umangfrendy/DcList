@@ -11,31 +11,6 @@
       <v-toolbar-title>DC List</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <!-- <v-menu
-        left
-        bottom
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu> -->
     </v-app-bar>
 
     <div class="font-weight-bold subtitle pa-2">Delivery Chalan Details</div>
@@ -51,21 +26,28 @@
         <div>
           <template>
             <div>
-              <v-expansion-panels class="mb-6">
-                <v-expansion-panel v-for="(item, i) in 5" :key="i">
-                  <v-expansion-panel-header expand-icon="mdi-chevron-down">
-                    Item
-                  </v-expansion-panel-header>
-                  <v-expansion-panel-content
-                    >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.</v-expansion-panel-content
-                  >
-                </v-expansion-panel>
-              </v-expansion-panels>
-
+              <v-col v-for="(item, i) in items" :key="i" cols="12">
+                  
+                <v-expansion-panels class="mb-6">
+                  <v-expansion-panel>
+                    <v-expansion-panel-header expand-icon="mdi-chevron-down">
+                      DC Number: {{item.DC_Number}}
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <v-row>
+                        <v-col cols="6"
+                          ><p class="caption">Total items: <b>{{item.total_items}}</b></p></v-col
+                        >
+                        <v-col cols="6"
+                          ><p class="caption">
+                            Total Amount: <b>{{item.total_amount}}</b>
+                          </p></v-col
+                        >
+                      </v-row>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-col>
             </div>
           </template>
         </div>
@@ -73,3 +55,30 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    items: [
+      {
+        DC_Number: "42122DC-75175",
+        total_items:2,
+        total_amount:243,
+        artist: "Foster the People",
+      },
+      {
+        DC_Number: "42122DC-75345",
+        total_items:9,
+        total_amount:1113,
+        artist: "Ellie Goulding",
+      },
+      {
+        DC_Number: "42122DC-75225",
+        total_items:4,
+        total_amount:2343,
+        artist: "Ellie Goulding",
+      },
+    ],
+  }),
+};
+</script>
