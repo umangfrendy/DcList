@@ -25,9 +25,9 @@
         <div>
           <template>
             <div>
-              <v-col v-for="(item, i) in items" :key="i" cols="12">
-                <v-expansion-panels>
-                  <v-expansion-panel>
+              <v-col cols="12">
+                <v-expansion-panels >
+                  <v-expansion-panel v-for="(item, i) in items" :key="i">
                     <v-expansion-panel-header >
                       DC Number: {{ item.DC_Number }}
                     </v-expansion-panel-header>
@@ -47,24 +47,14 @@
 
                       <div>
                         <template>
-                          <!-- <v-tabs center-active v-model="currentItem">
-                            <v-tab :href="'#' + order" class="font-weight-bold">
-                              ORDER</v-tab
-                            >
-                            <v-tab
-                              :href="'#' + product"
-                              class="font-weight-bold"
-                            >
-                              PRODUCT</v-tab
-                            >
-                          </v-tabs> -->
+                        
                           <v-tabs center-active v-model="currentItem">
                             <v-tab class="font-weight-bold"> ORDER</v-tab>
                             <v-tab class="font-weight-bold"> PRODUCT</v-tab>
                           </v-tabs>
                         </template>
                         <v-tabs-items v-model="currentItem">
-                          <v-tab-item class="pl-5">
+                          <v-tab-item class="ml-5">
                             <v-row class="pt-6">
                               <p class="body-2">
                                 Name: <b>{{ item.name }}</b>
