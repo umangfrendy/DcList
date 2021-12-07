@@ -16,7 +16,7 @@
     <div class="font-weight-bold subtitle pa-2">Delivery Chalan Details</div>
 
     <div align="center">
-      <h3>Delivery Otp:XXXX</h3>
+      <h3>Delivery Otp: XXXX</h3>
       <div>
         <v-tabs center-active>
           <v-tab class="font-weight-bold"> Upcoming</v-tab>
@@ -73,11 +73,6 @@
                           </v-tab-item>
 
                           <v-tab-item class="pt=5">
-                            <!-- <v-row
-                              align="right"
-                              align-content="right"
-                              class="text-right"
-                            > -->
                             <v-row alignment="left"> 
                             <v-card flat class="mt-10" height="200px"
                                 width="200px">
@@ -88,7 +83,7 @@
                                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                                 
                               >
-                                <v-card-title v-text="item.name"></v-card-title>
+                                <!-- <v-card-title v-text="item.name"></v-card-title> -->
                               </v-img>
                             </v-card>
                             </v-row>
